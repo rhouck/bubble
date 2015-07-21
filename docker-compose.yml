@@ -1,0 +1,7 @@
+web:
+  image: continuumio/anaconda
+  ports:
+   - "8888:8888"
+  volumes:
+   - .:/code
+  command: ipython notebook --ip=0.0.0.0
