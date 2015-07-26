@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<head>
+<style>
+#table{width:780px;margin:0 auto}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline}html{line-height:1}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}q,blockquote{quotes:none}q:before,q:after,blockquote:before,blockquote:after{content:"";content:none}a img{border:none}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block}#globalheader.modern{width:100%;background:#666666;display:block}#globalheader.modern #gh-content{width:100%;max-width:980px;min-width:780px;margin:0 auto}#globalheader.modern #globalnav{display:block;margin:0 8px;position:relative;font-size:12px;line-height:12px}#globalheader.modern #globalnav #gnavlist:after{content:'';width:100%;display:inline-block;font-size:0;line-height:0}#globalheader.modern #globalnav #gnavlist:before{content:'';width:100%;display:inline-block}#globalheader.modern #globalnav #gnavlist{width:auto;-ms-text-justify:distribute-all-lines;text-justify:distribute-all-lines;text-align:justify}#globalheader.modern #globalnav #gnavlist .current{opacity:0.5;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";font-weight:normal}#globalheader.modern #globalnav #gnavlist .current a:hover{opacity:1}#globalheader.modern #globalnav #gnavlist li{display:inline-block;position:relative}#globalheader.modern #globalnav #gnavlist li a{color:white;transition:opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)}#globalheader.modern #globalnav #gnavlist li a:hover{text-decoration:none;opacity:0.66;transition:opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=66)"}#globalheader.modern #globalnav div.logo{display:inline}#globalheader.modern #globalnav div.logo a{font-size:1.33333em;line-height:1.5em}#globalheader.modern #globalnav div.logo a:hover{text-decoration:none}#globalheader.modern #globalnav #mobile{display:none}* html{font-size:100%}html{font-size:16px;line-height:1.5em}body{background-color:white;color:#111;font-family:"Helvetica Neue", Helvetica, arial, sans-serif;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}#box{min-width:890px;margin:0 auto;position:relative}#globalnav.tall{line-height:4.5em}h1{margin-top:24px;color:#222;font-size:2em;line-height:1.5em;margin-bottom:0.75em}h1 a{color:#222222;text-decoration:none}h1 a:visited{color:#222222}h1 a:hover{color:#222222}h1 a:active{color:#222222}h1 a:hover{text-decoration:none;color:#307eb6}a{color:#307eb6}#head{width:780px;margin:0 auto;margin-bottom:1.5em}#container{position:relative}#container #ads{width:780px;margin:0 auto;margin-bottom:1.5em}img{display:block}a{text-decoration:none}a:hover{text-decoration:underline}.current,b{font-weight:bold}p{margin-bottom:1.5em}#footer{width:780px;margin:0 auto;overflow:hidden;*zoom:1;margin-top:23px;border-top-style:solid;border-top-width:0.08333em;padding-top:1.91667em;border-top:1px solid;font-size:0.75em;line-height:2em;color:#666;text-align:center;border-color:#e0e0ee;margin-bottom:2em;position:relative}#footer #footer-nav{float:right;position:relative;left:-50%}#footer #footer-nav ul{position:relative;left:50%}table td{padding-right:12px}table td{text-align:right}td.left{border-left:0}ul{list-style:circle}form.donate{display:inline}input.donate{position:absolute;margin-top:-1px}div.donate-space{width:92px;float:right}ul.see-also{margin-top:1.5em}h3{font-weight:bold}ul.nav{margin:0;padding:0;border:0;overflow:hidden;*zoom:1}ul.nav li{list-style-image:none;list-style-type:none;margin-left:0;white-space:nowrap;display:inline;float:left;padding-left:4px;padding-right:4px}ul.nav li:first-child,ul.nav li.first{padding-left:0}ul.nav li:last-child{padding-right:0}ul.nav li.last{padding-right:0}ul.nav li{position:relative;padding:0 6px 0 8px}ul.nav li:first-child{padding-left:0}ul.nav li:first-child:after{content:none}ul.nav li:after{content:'';background:#e0e0ee;height:16px;left:1px;margin-top:-8px;position:absolute;top:50%;width:1px}#subnav{margin-top:1.5em;margin-bottom:1.5em}#subnav .share{float:right;background:url("/assets/icon_facebook_blue_2x-6a35d2e5accd854cee9de79b5c86d02a.png") 8px 2px no-repeat;background-size:20px auto;padding:0 0 0 34px;vertical-align:baseline}#tablenav{margin-bottom:1.5em}#tablenav div:first-child{float:left;margin-right:8px}#_table{overflow:hidden;*zoom:1}#_table .tcol{float:left;margin-right:72px}#_table table#datatable{border-collapse:separate;border:1px solid #d7d7d7;margin-bottom:23px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.45);-moz-box-shadow:0 1px 3px rgba(0,0,0,0.45);box-shadow:0 1px 3px rgba(0,0,0,0.45)}#_table table#datatable th{text-align:left;font-weight:bold}#_table table#datatable th .value{display:none}#_table table#datatable td.right{position:relative;text-align:left}#_table table#datatable td .estimate{font-size:12px;color:#e6b3bf;margin-left:12px}#_table table#datatable tr.even,#_table table#datatable th{background-color:#f4f4f4}#_table table#datatable tr{line-height:3}#_table table#datatable td,#_table table#datatable th{border-right:1px solid white;border-left:1px solid #eaeaea;padding:0 12px}
+
+@media only screen and (max-device-width: 779px){html{width:100%}#head{width:100%}#container #ads{width:100%}#footer{width:100%}#box{min-width:initial;margin:0 8px;position:relative}#globalheader{opacity:1 !important}#gh-content{max-width:none !important;min-width:0 !important;position:relative}#globalnav{margin:0 auto !important;width:100% !important;height:44px}#globalnav a{color:white}#globalnav #gnavlist{display:none}#mobile{display:block !important}#mobile .menu{display:block !important;position:absolute;top:14px;right:8px;height:100%;font-size:16px}#mobile div.logo{display:block !important;position:relative;text-align:center;font-size:16px;top:5px;letter-spacing:2px}h1{font-size:20px;font-weight:bold;border:0}#footer{font-size:0.6875em;line-height:2.18182em;border-top-style:solid;border-top-width:0.09091em;padding-top:2.09091em}#footer .nbsp{display:none}#can-container{width:100%}#can{position:relative;width:100%;height:100%}#info{width:100%}.currentTitle{display:none}#table{width:100%}#_table{width:100%}#_table .tcol{margin-right:0 !important;float:none !important}#datatable{width:99%}#datatable th .title{display:none}#datatable th{text-align:center !important}#datatable th .value{display:inline !important}#datatable td{text-align:center !important}#faq{width:100%}#sitemap{width:100%}#sitemap .notice{width:auto !important}#sitemap div.popular{display:block;margin-bottom:48px}#sitemap h3{border-bottom:1px solid;border-color:#e0e0ee;margin-bottom:0px !important;padding-bottom:10px;text-transform:uppercase}#sitemap .col1,#sitemap .col2,#sitemap .col3{width:100% !important;margin-bottom:48px}#sitemap li{padding:0 5px;border-bottom:1px solid;border-color:#e0e0ee;width:100%}#sitemap li a{padding:10px 0;display:block}.see-also h3{padding-bottom:10px;text-transform:uppercase}.see-also li:last-child a{border-bottom:1px solid;border-color:#e0e0ee}.see-also a{display:block;padding:10px 0;border-top:1px solid;border-color:#e0e0ee}.see-also .sa-col{float:none;width:auto}.see-also .sa-col:first-child li:last-child a{border-bottom:0}}@media only screen and (max-width: 450px){#stats{width:100%}#stats td{border-bottom:1px solid;border-color:#e0e0ee;padding-right:0}}
+
+</style>
+<title>S&amp;P 500 Book Value Per Share by Quarter</title>
+<meta name="viewport" content="initial-scale=1" />
+  <meta name="description" content="S&amp;P 500 Book Value Per Share table by quarter, historic, and current data. Current S&amp;P 500 Book Value Per Share is 726.96." />
+<meta name="author" content="multpl">
+<meta name="application-name" content="multpl">
+  <link rel="canonical" href="http://www.multpl.com/s-p-500-book-value/table/by-quarter">
+  <link rel="alternate" type="application/rss+xml" title="S&amp;P 500 Book Value Per Share" href="/s-p-500-book-value/atom" />
+<meta property="fb:app_id" content="890838620959848" />
+  <meta property="og:image" content="http://www.multpl.com/s-p-500-book-value/og-image-00b80a3ff119a0f5.png" />
+
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:description" content="Check out this fantastic S&amp;P 500 Book Value Per Share table." />
+
+</head>
+  <div id="globalheader" class="modern">
+  <div id="gh-content">
+    <div id="globalnav">
+      <ul id="gnavlist" role="navigation">
+        <li><a href="/">S&amp;P 500 PE Ratio</a></li>
+        <li><a href="/shiller-pe/">Shiller PE Ratio</a></li>
+        <li>
+          <a href="/10-year-treasury-rate">10 Year Treasury Rate</a>
+        </li>
+        <li><a href="/s-p-500-dividend-yield/">S&amp;P 500 Dividend Yield</a></li>
+        <li><a href="/s-p-500-earnings/">S&amp;P 500 Earnings</a></li>
+        <li>
+          <a href="/s-p-500-historical-prices">S&amp;P 500 Historical Prices</a>
+        </li>
+        <li><a href="/sitemap">more</a></li>
+        <li>
+          <div class="logo">
+            <a href="/">multpl</a>
+          </div>
+        </li>
+      </ul>
+
+      <div id="mobile">
+        <div class="logo">
+          <a href="/">multpl</a>
+        </div>
+
+        <div class="menu">
+          <a href="/sitemap">menu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="box">
+
+  <div id="head">
+    <h1><a href="/s-p-500-book-value/">S&amp;P 500 Book Value Per Share by Quarter</a></h1>
+    
+  </div>
+  <div id="container">
+
+
+      <div id="ads">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- google_responsive -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-2952384934569318"
+	     data-ad-slot="4638208701"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+</div>
+
+  
+    <div id="content">
+        <div id="table">
+	  <div id="subnav">
+  <ul role="navigation" class="nav">
+    <li><a class="" href="/s-p-500-book-value">Chart</a></li>
+    <li><a href="/s-p-500-book-value/table/by-year" class="current">Table</a></li>
+
+    
+  </ul>
+</div>
+
+	  <div id="tablenav">
+<div><b>Show:</b></div>
+<ul class="nav">
+  <li><a href="/s-p-500-book-value/table/by-year">By Year</a></li>
+  <li><a href="/s-p-500-book-value/table/by-quarter" class="current">By Quarter</a></li>
+</ul>
+</div>
+
+	  <div>
+	      <div id="_table">
+    <div class="tcol">
+
+
+    <table id="datatable">
+      <tr>
+        <th class="left">Date</th>
+        <th>
+          <span class="title">S&amp;P 500 Book Value</span>
+          <span class="value">Value</span>
+        </th>
+      </tr>
+
+
+      <tr class="odd">
+        <td class="left">Dec 31, 2014</td>
+        <td class="right">726.96
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2014</td>
+        <td class="right">736.78
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2014</td>
+        <td class="right">733.84
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2014</td>
+        <td class="right">717.81
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2013</td>
+        <td class="right">715.84
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2013</td>
+        <td class="right">693.22
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 28, 2013</td>
+        <td class="right">679.15
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 28, 2013</td>
+        <td class="right">679.09
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2012</td>
+        <td class="right">666.97
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 28, 2012</td>
+        <td class="right">661.93
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 29, 2012</td>
+        <td class="right">639.45
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 30, 2012</td>
+        <td class="right">633.04
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 30, 2011</td>
+        <td class="right">613.14
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2011</td>
+        <td class="right">613.18
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2011</td>
+        <td class="right">613.08
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2011</td>
+        <td class="right">594.05
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2010</td>
+        <td class="right">579.14
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2010</td>
+        <td class="right">567.95
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2010</td>
+        <td class="right">541.60
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2010</td>
+        <td class="right">530.95
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2009</td>
+        <td class="right">513.58
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2009</td>
+        <td class="right">498.43
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2009</td>
+        <td class="right">487.69
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 30, 2009</td>
+        <td class="right">449.43
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2008</td>
+        <td class="right">451.37
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2008</td>
+        <td class="right">514.60
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2008</td>
+        <td class="right">530.70
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2008</td>
+        <td class="right">530.94
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2007</td>
+        <td class="right">529.59
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2007</td>
+        <td class="right">524.00
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2007</td>
+        <td class="right">516.91
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2007</td>
+        <td class="right">508.99
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2006</td>
+        <td class="right">504.39
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2006</td>
+        <td class="right">491.96
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2006</td>
+        <td class="right">474.91
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2006</td>
+        <td class="right">468.63
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2005</td>
+        <td class="right">453.06
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2005</td>
+        <td class="right">441.77
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2005</td>
+        <td class="right">436.90
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2005</td>
+        <td class="right">426.79
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2004</td>
+        <td class="right">414.75
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2004</td>
+        <td class="right">402.52
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2004</td>
+        <td class="right">386.23
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2004</td>
+        <td class="right">376.47
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2003</td>
+        <td class="right">367.17
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2003</td>
+        <td class="right">351.89
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2003</td>
+        <td class="right">346.32
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2003</td>
+        <td class="right">328.72
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2002</td>
+        <td class="right">321.72
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2002</td>
+        <td class="right">334.92
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2002</td>
+        <td class="right">329.52
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2002</td>
+        <td class="right">332.74
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2001</td>
+        <td class="right">338.37
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2001</td>
+        <td class="right">339.40
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2001</td>
+        <td class="right">345.87
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2001</td>
+        <td class="right">347.25
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 2000</td>
+        <td class="right">325.80
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Sep 30, 2000</td>
+        <td class="right">319.60
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Jun 30, 2000</td>
+        <td class="right">312.94
+        </td>
+      </tr>
+      <tr class="even">
+        <td class="left">Mar 31, 2000</td>
+        <td class="right">295.94
+        </td>
+      </tr>
+      <tr class="odd">
+        <td class="left">Dec 31, 1999</td>
+        <td class="right">290.68
+        </td>
+      </tr>
+    </table>
+
+    </div>
+
+    <div class="rcol">
+      <div id="description">
+<p>S&P 500 <a href="http://en.wikipedia.org/wiki/Book_value">book value</a> per share &mdash; non-inflation adjusted <a href="http://www.census.gov/hhes/www/income/data/historical/dollars.html">current dollars</a>.
+<ul>
+  Source:
+  <li><a href="http://us.spindices.com/indices/equity/sp-500">Standard &amp; Poor&rsquo;s</a>
+</ul>
+
+</div>
+          <ul class="see-also">
+      <h3>See also</h3>
+        <li><a href="/s-p-500-price-to-book">S&amp;P 500 Price to Book Value</a>
+    </ul>
+
+
+    </div>
+  </div>
+
+
+	  </div>
+  </div>
+
+      <div id="footer">
+Information is provided &lsquo;as is&rsquo; and solely for informational purposes, not for trading purposes or advice, and may be delayed.
+<br><br>
+You should sign up for our mailing list <a href="/mailing-list-signup">here</a>.
+<br><br>
+
+<div id="footer-nav">
+<ul class="nav">
+	<li>Copyright &copy; 2015</li>
+	<li><a href="mailto:contact@multpl.com">contact@multpl.com</a></li>
+	<li>
+		<div class="donate-space">&nbsp;</div>
+		<form class="donate" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="VAE8F8PQHDGGE">
+		<input class="donate" type="image" src="/assets/btn_donate_LG-0b0c8ebe77bd3a7c82bfa55afdd7a810.png" border="0" name="submit">
+		</form>
+	</li>
+</ul>
+</div>
+
+</div>
+    </div>
+
+  </div>
+
+</div> 
+
+<script>
+"use strict";
+  window.onerror=function(o,n,e){console.log("err"),console.log([o,n,e].join(","));var r=new Image;return r.src=["/jse?v=1","&m=",encodeURIComponent(o),"&f=",encodeURIComponent(n),"&n=",encodeURIComponent(e)].join(""),!1};
+</script>
+
+
+
+<script>
+"use strict";
+var CS;
+(function() {
+  var elem = document.createElement("canvas");
+  CS = !!(elem.getContext && elem.getContext("2d"));
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-5443756-3', {'cookieDomain': 'multpl.com', 'siteSpeedSampleRate': 100});
+  ga('set', 'dimension1', 'dosf1');
+
+  ga('set', 'expId', 'cFiy_Le5ShmqCnUylvNeWg');
+  ga('set', 'expVar', '0');
+
+  if (CS) {
+    ga('set', 'dimension2', 'yes');
+  } else {
+    ga('set', 'dimension2', 'no');
+  }
+
+  ga('send', 'pageview');
+
+</script>
+
+
+<script>
+"use strict";
+!function(){var o=document.getElementById("fb-link");null!=o&&(o.onclick=function(){return ga("send",{hitType:"social",socialNetwork:"facebook",socialAction:"share",socialTarget:window.location,hitCallback:function(){window.location=o.href}}),!1})}();
+</script>
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '890838620959848',
+      xfbml      : false,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
