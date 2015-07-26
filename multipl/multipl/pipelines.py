@@ -15,6 +15,7 @@ class ValidatePipeline(object):
     def process_item(self, item, spider):
         try:
             dateutil.parser.parse(item['date']).date()
+            item['value'] = float(item['value'].replace("%","")) / 100.
             return item
         except:
             raise DropItem("Not valid date")
