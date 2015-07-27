@@ -18,7 +18,7 @@ end = datetime.datetime.now().date()
 df = data.DataReader(["^GSPC", '^DJI', '^IXIC'], 'yahoo', start, end)
 # confirm series order has not changed
 df.columns = ['S&P', 'Dow', 'Nasdaq'] 
-df.ix[3,:,:].to_csv('data/market_close.csv')
+df.ix[3,:,:].to_csv('data/market_{0}.csv'.format(str(end).replace("-", "_")))
 
 
 """
@@ -48,7 +48,7 @@ fred = data.DataReader(["GDP",
                         "EXHOSLUSM495S",
                         "LES1252881600Q"], 
                        "fred", start, end)
-fred.to_csv('data/fred.csv')
+fred.to_csv('data/fred.csv'.format(str(end).replace("-", "_")))
 
 """
  Fama French
@@ -57,4 +57,4 @@ fred.to_csv('data/fred.csv')
 """
 # import pandas.io.data as web
 # ip = web.DataReader("12_Industry_Portfolios", "famafrench")
-# ip.to_csv('data/famma_french.csv')
+# ip.to_csv('data/famma_french.csv'.format(str(end).replace("-", "_")))
