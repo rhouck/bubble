@@ -1,11 +1,11 @@
 import os
+import sys
 
 import pandas as pd
 
+sys.path.append('../')
 import settings
 
-# market = pd.read_csv('data/market_close.csv', index_col=0, parse_dates=0)
-# market.plot(figsize=[15,3])
 
 def get_latest_file_containing_string(path, string):
     """Returns name of file most recently modified that contains the string `string`.
@@ -16,13 +16,12 @@ def get_latest_file_containing_string(path, string):
     """
     return "hi"
 
-def load_market_data():
+def latest_csv_to_pandas(string):
+    """Returns DF of pandas exported data from latest modified csv file matching string"""
     #get_latest_file_containing_string(path, string)
-    df = pd.read_csv('{0}/market_close.csv'.format(settings.DATA_DIR), 
+    # FIX THIS
+    fn = "{0}_2015_07_26.csv".format(string)
+    df = pd.read_csv("{0}/{1}".format(settings.DATA_DIR, fn), 
                      index_col=0, 
                      parse_dates=0)
     return df
-
-    
-if __name__ == '__main__':
-    print get_latest_file_containing_string('../data', '7')
