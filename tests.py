@@ -7,20 +7,18 @@ import pandas as pd
 from pandas_datareader import data, wb
 #import factories
 
+from utils import load_data as ld
+
 
 class DataCollectionTest(unittest.TestCase):
     
-    def setUp(self):
-        # create test data directory
-        self.data_dir = "data_tests"
-
     def test_data_directory_exists(self):
-        self.assertEqual(os.path.exists(self.data_dir), True)
+        self.assertEqual(os.path.exists('data'), True)
 
     def test_pandas_can_write_to_data_dir(self):
         df = pd.DataFrame(data=[1,2,3])
-        df.to_csv('{0}/test.csv'.format(self.data_dir))
-        self.assertEqual(os.path.isfile('{0}/test.csv'.format(self.data_dir), True))
+        df.to_csv('{0}/test.csv'.format('data'))
+        self.assertEqual(os.path.isfile('{0}/test.csv'.format('data'), True))
         # add logic to delete file
 
     def test_pandas_datareader_connection(self):
@@ -33,6 +31,31 @@ class DataCollectionTest(unittest.TestCase):
 
     def tearDown(self):
         pass
+
+class DataLoadTest(unittest.TestCase):
+
+        def setUp(self):
+            # create test data directory
+            self.data_dir = "data/tests"
+            # download small csvs and scrapy data
+
+        def test_file_picker_selects_latest_file(self):
+            # make two files, with a, b
+            # ensure if b is made after a, that b is chosen
+            assert False, "TODO: finish me"
+
+        def test_load_market_data_returns_df(self):
+            assert False, "TODO: finish me"
+
+        def test_load_fred_data_returns_df(self):
+            assert False, "TODO: finish me"
+
+        # def test_load_fama_data_returns_df(self):
+        #     assert False, "TODO: finish me"
+
+        def test_load_multipl_data_returns_df(self):
+            assert False, "TODO: finish me"
+
 
 if __name__ == '__main__':
     unittest.main()
