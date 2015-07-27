@@ -7,18 +7,25 @@ import pandas as pd
 from pandas_datareader import data, wb
 #import factories
 
+import settings
 from utils import load_data as ld
 
 
 class DataCollectionTest(unittest.TestCase):
     
+    def test_datadir_is_set(self):
+        try:
+            settings.DATA_DIR
+        except:
+            raise Exception("DATA_DIR not set in settings.py")
+
     def test_data_directory_exists(self):
-        self.assertEqual(os.path.exists('data'), True)
+        self.assertEqual(os.path.exists(settings.DATA_DIR), True)
 
     def test_pandas_can_write_to_data_dir(self):
         df = pd.DataFrame(data=[1,2,3])
-        df.to_csv('{0}/test.csv'.format('data'))
-        self.assertEqual(os.path.isfile('{0}/test.csv'.format('data'), True))
+        df.to_csv('{0}/test.csv'.format(settings.DATA_DIR))
+        self.assertEqual(os.path.isfile('{0}/test.csv'.format(settings.DATA_DIR), True))
         # add logic to delete file
 
     def test_pandas_datareader_connection(self):
@@ -32,11 +39,12 @@ class DataCollectionTest(unittest.TestCase):
     def tearDown(self):
         pass
 
+
 class DataLoadTest(unittest.TestCase):
 
         def setUp(self):
             # create test data directory
-            self.data_dir = "data/tests"
+            self.data_dir = "{0}/tests".format(settings.DATA_DIR)
             # download small csvs and scrapy data
 
         def test_file_picker_selects_latest_file(self):
