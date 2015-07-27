@@ -27,13 +27,13 @@ FRED - St Lois Fed
 Series:
 GDP             Gross Domestic Product
 CPIAUCSL        Consumer Price Index for All Urban Consumers: All Items
-VIXCLS          CBOE Volatility Index: VIX©
+VIXCLS          CBOE Volatility Index: VIX
 VXVCLS          CBOE S&P 500 3-Month Volatility Index
-AAA             Moody's Seasoned Aaa Corporate Bond Yield©
+AAA             Moody's Seasoned Aaa Corporate Bond Yield
 DTB3            3-Month Treasury Bill: Secondary Market Rate
-TOTDTEUSQ163N   Total Debt to Equity for United States©
+TOTDTEUSQ163N   Total Debt to Equity for United States
 GFDEGDQ188S     Federal Debt: Total Public Debt as Percent of Gross Domestic Product
-EXHOSLUSM495S   Existing Home Sales©
+EXHOSLUSM495S   Existing Home Sales
 LES1252881600Q  Employed full time: Median usual weekly real earnings: Wage and salary workers: 16 years and over
 """
 fred = data.DataReader(["GDP", 
