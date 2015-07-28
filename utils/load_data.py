@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 
 import pandas as pd
 
@@ -24,4 +25,19 @@ def latest_csv_to_pandas(string):
     df = pd.read_csv("{0}/{1}".format(settings.DATA_DIR, fn), 
                      index_col=0, 
                      parse_dates=0)
+    return df
+
+def latest_multipl_json_to_pandas():
+    """Returns DF of scraped multipl data from latest modified j1 (json) file"""
+    #get_latest_file_containing_string(path, string)
+    # FIX THIS
+    fn = "data/multipl_2015_07_26.jl"
+    with open(fn) as f:
+        content = f.readlines()
+        rows = [json.loads(c) for c in content]
+    df = pd.DataFrame(rows)
+    df.date = df.date.map(lambda x: pd.to_datetime(x))
+    # why are there duplicates?
+    df = df.drop_duplicates(['date', 'title'])
+    df = df.pivot(index='date', columns='title', values='value')
     return df
