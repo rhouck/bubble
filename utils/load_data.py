@@ -26,12 +26,12 @@ def latest_csv_to_pandas(string):
                      index_col=0, 
                      parse_dates=0)
     return df
-
+    
 def latest_multipl_json_to_pandas():
     """Returns DF of scraped multipl data from latest modified j1 (json) file"""
     #get_latest_file_containing_string(path, string)
     # FIX THIS
-    fn = "data/multipl_2015_07_26.jl"
+    fn = "{0}/multipl_2015_07_26.jl".format(settings.DATA_DIR)
     with open(fn) as f:
         content = f.readlines()
         rows = [json.loads(c) for c in content]
