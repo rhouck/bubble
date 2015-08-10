@@ -29,6 +29,10 @@ scrapy crawl multipl
 ```
 This will store a collection of json objects in your data folder.
 
+The machine learnign model currently relies on the SMOTE algorithm to upsample rare data classes and create a more balanced traiing set.
+I used an implementation from the "UnbalancedDataset" library but because the package is not available in PyPi, I simply included the library in the `utils` folder.
+The source for this library can be found here: https://github.com/fmfn/UnbalancedDataset
+
 More to come... duh
 
 Hi Dragon

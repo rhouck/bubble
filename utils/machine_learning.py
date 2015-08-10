@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from sklearn import cross_validation, grid_search, metrics
 
+import utils.unbalanced_dataset as ud
 
 
 def gen_Xs_ys_split(X, y, test_size=.4):
@@ -28,21 +29,30 @@ def gen_Xs_ys_split(X, y, test_size=.4):
 
 
 def upsample_hits(X, y):    
-    """For use with unbalanced classification data sets, duplicate or upsample 1s so that set of 1s and 0s roughly even. Returns (X, y)
-
+    """For use with unbalanced classification data sets, duplicate or upsample 1s so that set of 1s and 0s roughly even. Returns (X, y).
+    Uses SMOTE algorithm to generate synthetic 1s using k nearest neighbors with 0s data to create more generalizable data.
+    SMOTE algorithm from library 'UnbalancedDataset', found here: https://github.com/fmfn/UnbalancedDataset
     :param X: A dataframe of features
     :param y: A series of clasifications
     :rtype: A tuple, (X, y)
     """
-    hits = y[y==1]
-    hit_rows = X.ix[hits.index]
-    hit_ratio = (y.sum() * 1.) / y.count()
     
-    for i in range(int(1 / hit_ratio)):
-        X = X.append(hit_rows)
-        y = y.append(hits)
+    # hits = y[y==1]
+    # hit_rows = X.ix[hits.index]
+    # hit_ratio = (y.sum() * 1.) / y.count()
     
+    # for i in range(int(1 / hit_ratio)):
+    #     X = X.append(hit_rows)
+    #     y = y.append(hits)
+    
+    # return (X, y)
+    ratio = float(np.count_nonzero(y==1)) / float(np.count_nonzero(y==0))
+    smote = ud.SMOTE(ratio=(1. / ratio), verbose=False, kind='regular')
+    smox, smoy = smote.fit_transform(X.values, y.values)
+    X = pd.DataFrame(data=smox, columns=X.columns)
+    y = pd.Series(data=smoy)
     return (X, y)
+
 
 
 def infer_selected_features(X_train, X_pruned):
