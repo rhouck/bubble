@@ -1,11 +1,10 @@
 import math
+import random
 
+import numpy as np
 import pandas as pd
 from sklearn import cross_validation, grid_search, metrics
 
-
-def simple_list_avg(x):
-    return (sum(x) * 1.) / len(x)
 
 
 def gen_Xs_ys_split(X, y, test_size=.4):
@@ -56,7 +55,7 @@ def infer_selected_features(X_train, X_pruned):
     return selected_features
 
 
-def cross_validation_metrics(clf, X, y):
+def cross_validation_metrics(clf, X, y, sample_size=None):
     """
     Runs k-fold (without shuffle) cross validation on data set and returns dictionary with keys for `geometric_mean`
     and `weighted_accuracy` each containing a list of scores.
@@ -64,6 +63,7 @@ def cross_validation_metrics(clf, X, y):
     :param clf: A scikit learn model object, e.g. linear_model.LogisticRegression or ensemble.RandomForestClassifier
     :param X: A dataframe of features
     :param y: A series of clasifications
+    :param sample_size: If not None, Float indicating proportion of data set to randomly sample for training model
     :rtype: dict
     """
     cv_metrics = {'geometric_mean': [], 'weighted_accuracy': []}
@@ -71,6 +71,13 @@ def cross_validation_metrics(clf, X, y):
     for train, test in kf:
         
         X_train_up, y_train_up = upsample_hits(X.ix[train], y.ix[train])
+        
+        if sample_size:
+            length = y.shape[0]
+            inds = sorted(random.sample(range(length), int(length*sample_size)))
+            X_train_up = X_train_up.ix[inds]
+            y_train_up = y_train_up.ix[inds]
+        
         clf.fit(X_train_up, y_train_up)
         y_pred_cv = clf.predict(X.ix[test])
         
@@ -107,8 +114,8 @@ def run_grid_search(model, X, y, **params):
         row = params    
         clf = model(**params)
         cv_metrics = cross_validation_metrics(clf, X, y)   
-        row['geometric_mean'] = simple_list_avg(cv_metrics['geometric_mean'])
-        row['weighted_accuracy'] = simple_list_avg(cv_metrics['weighted_accuracy'])
+        row['geometric_mean'] = np.mean(cv_metrics['geometric_mean'])
+        row['weighted_accuracy'] = np.mean(cv_metrics['weighted_accuracy'])
         row['metric_mean'] = (row['geometric_mean'] + row['weighted_accuracy']) / 2.
         grid.append(row)
     grid = pd.DataFrame(grid)    
