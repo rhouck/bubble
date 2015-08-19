@@ -18,7 +18,7 @@ def get_max_loss(per, ret):
 
 def change_space(s, years):
     """Calculates relative increase in value over previous period (increase based on ewma values)"""
-    s = pd.ewma(s, halflife=90)
+    s = pd.ewma(s, halflife=15)
     return s / s.shift(360*years) - 1.
 
 
