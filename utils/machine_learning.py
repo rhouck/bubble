@@ -83,7 +83,7 @@ def cross_validation_metrics(clf, X, y, sample_size=None):
         X_train_up, y_train_up = upsample_hits(X.ix[train], y.ix[train])
         
         if sample_size:
-            length = y.shape[0]
+            length = y_train_up.shape[0]
             inds = sorted(random.sample(range(length), int(length*sample_size)))
             X_train_up = X_train_up.ix[inds]
             y_train_up = y_train_up.ix[inds]
@@ -132,14 +132,16 @@ def run_grid_search(model, X, y, **params):
     return grid
 
 
-def test_model(clf, data):
+def test_model(clf, X_train, X_test, y_train, y_test):
     """Fits model on training data and analyzes performance on test data. Prints generalized empirics to judge.
 
     :param clf: A scikit learn model object, e.g. linear_model.LogisticRegression or ensemble.RandomForestClassifier
-    :param data: A tuple containing dataframes for (X_train, X_test, y_train, y_test)
+    :param X_train: A pandas dataframe 
+    :param X_test: A pandas dataframe
+    :param y_train: A pandas dataframe
+    :param y_test: A pandas dataframe
     :rtype: None
     """
-    X_train, X_test, y_train, y_test = data
     X_train_up, y_train_up = upsample_hits(X_train, y_train)
     clf.fit(X_train_up, y_train_up)
     y_pred = clf.predict(X_test)
@@ -158,3 +160,25 @@ def test_model(clf, data):
     print pd.DataFrame(metrics.confusion_matrix(y_test, y_pred), 
                        index=['0 - actual', '1 - actual'], 
                        columns=['0 - predicted', '1 - predicted'])
+
+
+def plot_decisions_on_train_set(clf, X, y):
+    X_up, y_up = upsample_hits(X, y)
+    clf.fit(X_up, y_up)
+    X.plot(figsize=[18,3], alpha=.1, title="feature scores with model predictions and actual labels")
+    pd.Series(clf.predict_proba(X)[:,1], index=X.index).plot(alpha=.8)
+    y.plot(alpha=.8)
+
+
+def plot_learning_curve(clf, X, y):
+    grid = {}
+    for i in (.1, .25, .5, .75, .9, 1):
+        bank = []
+        for j in range(5):    
+            cv_metrics = cross_validation_metrics(clf, X, y, sample_size=i)
+            avg_score = (np.mean(cv_metrics['geometric_mean']) + np.mean(cv_metrics['weighted_accuracy'])) / 2.
+            bank.append(avg_score)
+        grid[i] = np.mean(bank)
+    grid = pd.Series(grid, name='cv_score')
+    grid.index.name = 'proportion of total data set used'
+    grid.plot(title="learning curve (cv scores)", figsize=[9,3])
